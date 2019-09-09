@@ -4,12 +4,14 @@ import com.desafio.model.Pessoa;
 import com.desafio.repository.PessoaRepository;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.datetime.DateFormatter;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+
 @Service
 public class PessoaService {
 
@@ -22,7 +24,7 @@ public class PessoaService {
                         .orElseThrow(Exception::new));
     }
 
-    public Mono<Void> insertNewPessoa(String nome, String genero, String email,
+    public Mono<Void> insertNewPessoa(String nome, String email, String genero,
                                       LocalDate dataNascimento, String documentId,
                                       String naturalidade, String nacionalidade) {
         return Mono.fromCallable(
@@ -40,7 +42,7 @@ public class PessoaService {
         ).then();
     }
 
-    public Mono<Pessoa> update(Long id, String nome, String genero, String email,
+    public Mono<Pessoa> update(Long id, String nome,  String email, String genero,
                                    LocalDate dataNascimento, String documentId,
                                    String naturalidade, String nacionalidade) {
         return Mono.fromCallable(

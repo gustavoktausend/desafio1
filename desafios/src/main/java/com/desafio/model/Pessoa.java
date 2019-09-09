@@ -9,6 +9,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Wither;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,13 +36,16 @@ public class Pessoa {
     private String genero;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String email;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dataNascimento;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String naturalidade;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String nacionalidade;
     private String documentId;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime dataHoraCadastro;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime ultimaAlteracao;
 
 

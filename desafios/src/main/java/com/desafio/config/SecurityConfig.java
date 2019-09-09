@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -17,13 +18,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.csrf().disable()
                 .authorizeRequests().anyRequest().authenticated()
                 .and().httpBasic();
+        httpSecurity.cors();
 
     }
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder authentication)
-            throws Exception
-    {
+            throws Exception {
         authentication.inMemoryAuthentication()
                 .withUser("admin")
                 .password(passwordEncoder().encode("123"))

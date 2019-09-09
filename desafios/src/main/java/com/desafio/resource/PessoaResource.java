@@ -10,8 +10,10 @@ import reactor.core.publisher.Mono;
 
 import java.time.LocalDate;
 
+
 @Validated
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping(value = "/api/pessoa")
 public class PessoaResource {
 
@@ -23,7 +25,7 @@ public class PessoaResource {
         return pessoaService.getPessoaById(id);
     }
 
-    @PostMapping("/novo")
+    @PostMapping
     public Mono<Void> post(@RequestParam String nome,
                            @RequestParam(required = false) String email,
                            @RequestParam(required = false) String genero,
